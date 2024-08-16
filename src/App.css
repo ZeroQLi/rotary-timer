@@ -28,6 +28,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1em;
 }
 
 .active {
@@ -35,6 +36,7 @@ h1 {
   border-radius: 10px;
 }
 
-.timer {
+.countDown {
   color: greenyellow;
+  font-size: 4.5em;
 }

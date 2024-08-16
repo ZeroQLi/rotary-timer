@@ -57,7 +57,7 @@ class RotaryDial {
 
     this.c = this.canvas.getContext('2d');
 
-    this.c.font = this.size * 0.08 + "px Arial";
+    this.c.font = this.size * 0.08 + "px Poppins";
 
     this.c.textAlign = "center";
 

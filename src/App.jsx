@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import RotaryDial from './RotaryDial'
 import Countdown, { zeroPad } from 'react-countdown';
+import Confetti from 'react-confetti-boom';
+var audio = new Audio('/horn.mp3');
+
+let current = 0;
 
 function App() {
 
@@ -18,7 +22,6 @@ function App() {
   const [timeIndex, setTimeIndex] = useState(0);
   const [timerstamp, setTimerstamp] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
-  let current = 0;
 
   let timer = false;
 
@@ -52,11 +55,11 @@ function App() {
 
     useEffect(() => {
       const rd = new RotaryDial({ 
-        discFillColor: '#d00000',
-        discStrokeColor: '#',
-        arrowFillColor: '#fffcf2',
+        discFillColor: '#d6ccc2',
+        discStrokeColor: '#d5bdaf',
         circlesStrokeColor: '#fffcf2',
         circlesHighlightColor: '#3a6ea5',
+        arrowFillColor: '#d00000',
         callback: updateTimer
        });}, 
     []);
@@ -67,8 +70,20 @@ function App() {
       setTimerActive ((check) => check = true )
   }
 
-    const renderer = ({ hours, minutes, seconds }) => {
-      return <h1 className='timer' >{zeroPad(hours)} : {zeroPad(minutes)} : {zeroPad(seconds)}</h1>;
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+      if (completed) {
+        // Render a completed state
+        audio.play();
+        return <>
+          <h1 className='countDown' >{zeroPad(hours)} : {zeroPad(minutes)} : {zeroPad(seconds)}</h1>
+          <Confetti mode="boom" particleCount={100} />
+        </>
+      }
+      else {
+        return <>
+          <h1 className='countDown' >{zeroPad(hours)} : {zeroPad(minutes)} : {zeroPad(seconds)}</h1>
+        </>
+      }
   };
   
   const disableTimer = () => {
@@ -100,11 +115,11 @@ function App() {
           <span className={timeIndex === 4 ? "active" : ''}>{secondTens}</span>
           <span className={timeIndex === 5 ? "active" : ''}>{secondOnes}</span>
         </h1>
-
       }
 
       <button onClick={timerActive ? disableTimer : activateTimer}> {timerActive ? 'Reset' : 'Start'} </button>
-      {timerActive ? <h3>Dial "9" to pause. "5" to play. "8" to reset</h3> : <h3></h3>  }
+      {/* {timerActive ? <h3>Dial "9" to pause. "5" to play. "8" to reset</h3> : <h3></h3>  } */}
+      <h3></h3>
     </div>
   )
 }
