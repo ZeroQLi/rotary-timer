@@ -1,0 +1,40 @@
+canvas {
+  display: block;
+}
+
+button {
+  font-size: 2ch;
+  padding: 1ch 3ch;
+  font-weight: 600;
+  border: 3px solid #beca1f52;
+  border-radius: 20ch;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: #04AA6D;
+  /* Green */
+  color: white;
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: 3vh;
+  margin-top: 5vh;
+  color: whitesmoke;
+}
+
+#timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active {
+  background-color: #04AA6D;
+  border-radius: 10px;
+}
+
+.timer {
+  color: greenyellow;
+}
