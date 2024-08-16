@@ -1,3 +1,5 @@
+/* CAUTION: absolute catastrophe ahead, read at your own risk */
+
 import { useState, useEffect } from 'react'
 import './App.css'
 import RotaryDial from './RotaryDial'

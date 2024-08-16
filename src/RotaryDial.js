@@ -1,3 +1,6 @@
+/* Rotary dial by victorqribeiro (https://github.com/victorqribeiro/dial) */
+/* with a few modifications by me for sound */
+
 var audio = new Audio('/click.mp3');
 
 class RotaryDial {
